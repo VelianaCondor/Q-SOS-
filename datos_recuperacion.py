@@ -5,10 +5,6 @@ Dataset consolidado de logística de emergencia (escenario: sismo con
 epicentro aproximado en Chupaca) para las provincias de Huancayo, Chupaca
 y Concepción (Junín, Perú).
 
-Integra en un solo módulo lo que antes estaba repartido entre
-`logistica_v2.py` (inventario de recursos por localidad) y
-`generar_datos.py` (nodos, red vial, hospitales, priorización):
-
     NODOS                 -> lista cruda (id, nombre, tipo, provincia, lat, lon, fuente_coord)
     COORDS / NOMBRES       -> lookups rápidos por id de nodo
     LOGISTICA              -> inventario por nodo (agua, alimentos, primeros_auxilios,
@@ -22,21 +18,12 @@ Integra en un solo módulo lo que antes estaba repartido entre
     construir_grafo()      -> devuelve un networkx.Graph listo para el optimizador
                                (rutas, asignación de vehículos, minimización de tiempo)
 
-Pensado para importarse directo:
-
-    from datos_recuperacion import NODOS_INFO, ARISTAS, ADYACENCIA, FLOTA_TOTAL, construir_grafo
-    G = construir_grafo()
-
 No escribe ningún archivo en disco al importarse; todo queda en memoria.
 """
 
 import math
 
-# =====================================================================
 # 1. NODOS (localidades)
-#    fuente_coord = "mapa+geo" -> ubicación real conocida con buena confianza
-#    fuente_coord = "estimada" -> posición aproximada, validar con Google Maps/OSM
-# =====================================================================
 NODOS = [
     # id, nombre, tipo, provincia, lat, lon, fuente_coord
     ("HYO",  "Huancayo",                 "capital_departamental", "Huancayo",   -12.0654, -75.2049, "mapa+geo"),
@@ -89,9 +76,7 @@ NOMBRES = {n[0]: n[1] for n in NODOS}
 TIPOS = {n[0]: n[2] for n in NODOS}
 PROVINCIAS = {n[0]: n[3] for n in NODOS}
 
-# =====================================================================
 # 2. LOGISTICA (inventario y recursos por nodo)
-# =====================================================================
 LOGISTICA = {
 
 "HYO": {
@@ -310,13 +295,7 @@ _faltantes = [n[0] for n in NODOS if n[0] not in LOGISTICA]
 if _faltantes:
     raise ValueError(f"Nodos sin datos de logística: {_faltantes}")
 
-# =====================================================================
 # 3. ARISTAS / RED VIAL
-#    distancia_km: si el mapa trae la etiqueta se usa esa (fuente="mapa"),
-#    si no, se calcula Haversine +25% (factor de sinuosidad vial andina).
-#    Estas distancias en línea recta son solo una aproximación inicial;
-#    para el entregable final conviene recalcular con OSRM/Google Directions.
-# =====================================================================
 ARISTAS_BASE = [
     # (origen, destino, estado, km_mapa_o_None)
     ("HYO", "ETB", "asfaltada", 2.0),
@@ -447,10 +426,7 @@ def ruta_mas_corta(origen_id, destino_id, evitar_trocha=False):
     camino.reverse()
     return camino, round(dist[destino_id], 2)
 
-
-# =====================================================================
-# 4. HOSPITALES / ESTABLECIMIENTOS DE SALUD (DIRESA Junín / EsSalud, jul-2026)
-# =====================================================================
+# 4. HOSPITALES / ESTABLECIMIENTOS DE SALUD 
 HOSPITALES = [
     {"id": "H1",  "nombre": "Hospital Regional Docente Clínico Quirúrgico Daniel A. Carrión",
      "nodo_id": "HYO", "ubicacion": "Huancayo", "red": "MINSA", "categoria": "III-1",
@@ -487,12 +463,7 @@ HOSPITALES = [
      "lat": -12.0625, "lon": -75.2531, "direccion": "Huamancaca Chico"},
 ]
 
-# =====================================================================
 # 5. PRIORIDAD DE COMUNIDADES (escenario sismo, epicentro ~Chupaca)
-#    Criterio: cercanía al epicentro (CHP), disponibilidad de
-#    establecimiento de salud propio (a menor disponibilidad, mayor
-#    prioridad) y si la vía de acceso es no asfaltada/trocha (más aislado).
-# =====================================================================
 COMUNIDADES = [
     "CHP", "AHU", "CHB", "HMCH", "HUAC", "YCS", "PIL", "SIC", "3DIC", "PAC", "HCOL",
     "HYC", "VIQ", "HCP", "CHU_P", "SAP", "PUC", "CHI", "HCN", "ETB", "HYO",
@@ -500,11 +471,8 @@ COMUNIDADES = [
     "QUIL", "SANO", "HUAL", "SAGU", "COCH", "SRO", "QUI2", "ING", "SDP", "HUAN",
 ]
 
-# Epicentro del escenario activo. Cambia este id para recalcular la
-# priorización ante un sismo con epicentro en otra localidad
-# (por ejemplo "CHB" para Chongos Bajo) sin tocar el resto del módulo.
-EPICENTRO_ID = "CHP"
 
+EPICENTRO_ID = "CHP"
 
 def construir_prioridad(epicentro_id=EPICENTRO_ID):
     """Recalcula el ranking de urgencia asumiendo el epicentro en
@@ -545,11 +513,7 @@ def construir_prioridad(epicentro_id=EPICENTRO_ID):
 EPICENTRO = COORDS[EPICENTRO_ID]
 PRIORIDAD_COMUNIDADES = construir_prioridad(EPICENTRO_ID)
 
-# =====================================================================
 # 6. VISTA CONSOLIDADA POR NODO (input directo para el optimizador)
-# =====================================================================
-
-
 def _construir_nodos_info():
     prioridad_por_id = {f["id"]: f for f in PRIORIDAD_COMUNIDADES}
     info = {}
@@ -570,11 +534,7 @@ def _construir_nodos_info():
 
 NODOS_INFO = _construir_nodos_info()
 
-# =====================================================================
 # 7. FLOTA TOTAL DISPONIBLE (para el problema de asignación de vehículos)
-# =====================================================================
-
-
 def _resumen_flota():
     total = {}
     for datos in LOGISTICA.values():
@@ -585,15 +545,7 @@ def _resumen_flota():
 
 FLOTA_TOTAL = _resumen_flota()
 
-# =====================================================================
 # 8. GRAFO (opcional, requiere `pip install networkx`)
-#    Nodo = localidad con sus recursos/prioridad como atributos.
-#    Arista = tramo de carretera con distancia_km y estado_via.
-#    Listo para formular el problema como VRP/QUBO (rutas, distribución,
-#    asignación de vehículos, minimización de tiempo de respuesta).
-# =====================================================================
-
-
 def construir_grafo():
     """Devuelve un networkx.Graph con nodos y aristas listos para
     optimización clásica o cuántica de rutas. Requiere `networkx`.
