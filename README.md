@@ -3,6 +3,28 @@ Proyecto desarrollado que busca desarrollar un modelo de detección de rutas óp
 
 ---
 
+# 🚀 Instalación
+
+1. Clona el repositorio:
+
+```bash
+https://github.com/VelianaCondor/Q-SOS-.git
+cd Q-SOS
+```
+
+2. Instala las dependencias:
+
+```bash
+pip install streamlit networkx dimod dwave-ocean-sdk matplotlib numpy
+```
+
+3. Ejecuta la aplicación:
+
+```bash
+streamlit run qsos_app.py
+```
+--- 
+
 # 🌎 Problema
 
 Los desastres naturales, como los terremotos, generan daños en la infraestructura vial que dificultan el acceso a las zonas afectadas y retrasan la atención de la población damnificada.
