@@ -1,4 +1,4 @@
-# Q-SOS
+tengo este dataset y quiero dar como dato el epicentro y que el algoritmo cuantico calcule las ciudades afectadas, es decir los lugares cercanos a Chongos bajos y tambien que lleve las uni# Q-SOS
 Proyecto desarrollado que busca desarrollar un modelo de detección de rutas óptimas en caso de desastres naturales basado en algoritmos cuánticos de priorización de recursos, vehículos, alimentos y medicamentos
 
 ---
@@ -117,15 +117,3 @@ Sujeto a:
 - Cobertura de la demanda.
 - Restricciones logísticas.
 - Condiciones de la red vial.
-
----
-
-# 🚀 Trabajo Futuro
-
-- Integración con información sísmica en tiempo real.
-- Actualización dinámica del estado de las carreteras.
-- Optimización multiobjetivo.
-- Incorporación de drones para reconocimiento y entrega de suministros.
-- Ejecución completa sobre hardware cuántico mediante **QAOA**.
-
-Proyecto desarrollado durante una **Hackathon de Computación Cuántica**, explorando el uso de algoritmos cuánticos para optimizar la logística humanitaria y la respuesta ante desastres naturales.
