@@ -1,4 +1,4 @@
-# Q-SOS-
+# Q-SOS
 Proyecto desarrollado que busca desarrollar un modelo de detección de rutas óptimas en caso de desastres naturales basado en algoritmos cuánticos de priorización de recursos, vehículos, alimentos y medicamentos
 
 ---
@@ -22,11 +22,11 @@ Proponemos un sistema basado en **optimización cuántica** que utiliza:
 
 El sistema es capaz de:
 
-- 📍 Modelar hospitales, comunidades afectadas y la red vial como un **grafo**.
-- 🚑 Asignar el recurso más adecuado (ambulancias, camiones, helicópteros, etc.) según la disponibilidad y las condiciones de acceso.
-- 🛣️ Calcular rutas considerando carreteras transitables y bloqueadas.
-- ⏱️ Minimizar el tiempo total de respuesta.
-- 🚨 Priorizar las comunidades con mayor nivel de afectación.
+- Modelar hospitales, comunidades afectadas y la red vial como un **grafo**.
+- Asignar el recurso más adecuado (ambulancias, camiones, helicópteros, etc.) según la disponibilidad y las condiciones de acceso.
+- Calcular rutas considerando carreteras transitables y bloqueadas.
+- Minimizar el tiempo total de respuesta.
+- Priorizar las comunidades con mayor nivel de afectación.
 
 ---
 
@@ -58,10 +58,10 @@ El problema se formula como un **Constrained Quadratic Model (CQM)**, el cual pu
 
 Actualmente el proyecto permite ejecutar:
 
-- ✅ Solución exacta (Fuerza Bruta)
-- ✅ Simulated Annealing (heurística clásica inspirada en computación cuántica)
-- ✅ D-Wave Hybrid CQM Solver
-- 🚀 Preparado para algoritmos basados en **QAOA**
+- Solución exacta (Fuerza Bruta)
+- Simulated Annealing (heurística clásica inspirada en computación cuántica)
+- D-Wave Hybrid CQM Solver
+- Preparado para algoritmos basados en **QAOA**
 
 ---
 
@@ -127,9 +127,5 @@ Sujeto a:
 - Optimización multiobjetivo.
 - Incorporación de drones para reconocimiento y entrega de suministros.
 - Ejecución completa sobre hardware cuántico mediante **QAOA**.
-
----
-
-# 👥 Autores
 
 Proyecto desarrollado durante una **Hackathon de Computación Cuántica**, explorando el uso de algoritmos cuánticos para optimizar la logística humanitaria y la respuesta ante desastres naturales.
