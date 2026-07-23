@@ -92,9 +92,10 @@ Escenario considerado:
 
 ```text
 .
+├── app.py
 ├── datos_recuperacion.py        # Base de datos de localidades, recursos y red vial
 ├── depositos_cercanos.py        # Selección automática de depósitos cercanos
-├── escenario_demo_chb.py        # Modelo de optimización y ejecución del escenario
+├── motor.py        
 └── README.md
 ```
 
