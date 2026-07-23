@@ -38,12 +38,7 @@ Proponemos un sistema basado en **optimización cuántica** que utiliza:
 - **QUBO** para modelar el problema de optimización.
 - **QAOA** para encontrar una asignación eficiente de recursos de emergencia.
 
-El sistema es capaz de:
-- Modelar hospitales, comunidades afectadas y la red vial como un **grafo**.
-- Asignar el recurso más adecuado (ambulancias, camiones, helicópteros, etc.) según la disponibilidad y las condiciones de acceso.
-- Calcular rutas considerando carreteras transitables y bloqueadas.
-- Minimizar el tiempo total de respuesta.
-- Priorizar las comunidades con mayor nivel de afectación.
+El sistema modela hospitales, comunidades afectadas y la red vial como un grafo para representar el escenario de emergencia. A partir de esta representación, asigna el recurso más adecuado (ambulancias, camiones, helicópteros, entre otros) según la disponibilidad y las condiciones de acceso, calcula rutas considerando carreteras transitables o bloqueadas, minimiza el tiempo total de respuesta y prioriza la atención de las comunidades con mayor nivel de afectación.
 
 ---
 
