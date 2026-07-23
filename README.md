@@ -1,9 +1,9 @@
-# Q-SOS
+# **Q-SOS**
 Proyecto desarrollado que busca desarrollar un modelo de detección de rutas óptimas en caso de desastres naturales basado en algoritmos cuánticos de priorización de recursos, vehículos, alimentos y medicamentos
 
 ---
 
-# 🚀 Instalación
+# Instalación
 
 1. Clona el repositorio:
 
@@ -25,7 +25,7 @@ streamlit run qsos_app.py
 ```
 --- 
 
-# 🌎 Problema
+# Problema
 
 Los desastres naturales, como los terremotos, generan daños en la infraestructura vial que dificultan el acceso a las zonas afectadas y retrasan la atención de la población damnificada.
 
@@ -35,7 +35,7 @@ Como caso de estudio, este proyecto se enfoca en el **sismo ocurrido en el distr
 
 ---
 
-# 💡 Solución
+# Solución
 
 Proponemos un sistema basado en **optimización cuántica** que utiliza:
 
@@ -52,7 +52,7 @@ El sistema es capaz de:
 
 ---
 
-# ⚙️ Funcionamiento
+# Funcionamiento
 
 El flujo del sistema es el siguiente:
 
@@ -74,7 +74,7 @@ El flujo del sistema es el siguiente:
 
 ---
 
-# 🧠 Optimización Cuántica
+# Optimización Cuántica
 
 El problema se formula como un **Constrained Quadratic Model (CQM)**, el cual puede transformarse en un modelo **QUBO** para ser resuelto mediante algoritmos de optimización cuántica.
 
@@ -87,7 +87,7 @@ Actualmente el proyecto permite ejecutar:
 
 ---
 
-# 📍 Caso de Estudio
+# Caso de Estudio
 
 **Ubicación:** Chongos Bajo, Chupaca, Junín - Perú
 
@@ -100,7 +100,7 @@ Escenario considerado:
 
 ---
 
-# 📂 Estructura del Proyecto
+# Estructura del Proyecto
 
 ```text
 .
@@ -112,7 +112,7 @@ Escenario considerado:
 
 ---
 
-# 🛠 Tecnologías
+# Tecnologías
 
 - Python
 - D-Wave Ocean SDK
@@ -125,7 +125,7 @@ Escenario considerado:
 
 ---
 
-# 🎯 Objetivo de Optimización
+# Objetivo de Optimización
 
 Minimizar:
 
