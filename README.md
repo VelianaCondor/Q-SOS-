@@ -1,4 +1,4 @@
-tengo este dataset y quiero dar como dato el epicentro y que el algoritmo cuantico calcule las ciudades afectadas, es decir los lugares cercanos a Chongos bajos y tambien que lleve las uni# Q-SOS
+# Q-SOS
 Proyecto desarrollado que busca desarrollar un modelo de detección de rutas óptimas en caso de desastres naturales basado en algoritmos cuánticos de priorización de recursos, vehículos, alimentos y medicamentos
 
 ---
