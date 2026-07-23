@@ -27,10 +27,7 @@ streamlit run qsos_app.py
 
 # Problema
 
-Los desastres naturales, como los terremotos, generan daños en la infraestructura vial que dificultan el acceso a las zonas afectadas y retrasan la atención de la población damnificada.
-
-Además, los recursos de emergencia (ambulancias, camiones, helicópteros, entre otros) son limitados y su asignación suele realizarse de forma manual o con información incompleta, incrementando los tiempos de respuesta y reduciendo la eficiencia de las operaciones de ayuda humanitaria.
-
+Los desastres naturales, como los terremotos, generan daños en la infraestructura vial que dificultan el acceso a las zonas afectadas y retrasan la atención de la población damnificada. Además, los recursos de emergencia (ambulancias, camiones, helicópteros, entre otros) son limitados y su asignación suele realizarse de forma manual o con información incompleta, incrementando los tiempos de respuesta y reduciendo la eficiencia de las operaciones de ayuda humanitaria.
 Como caso de estudio, este proyecto se enfoca en el **sismo ocurrido en el distrito de Chongos Bajo**, provincia de Chupaca, región Junín, Perú.
 
 ---
@@ -38,12 +35,10 @@ Como caso de estudio, este proyecto se enfoca en el **sismo ocurrido en el distr
 # Solución
 
 Proponemos un sistema basado en **optimización cuántica** que utiliza:
-
 - **QUBO** para modelar el problema de optimización.
 - **QAOA** para encontrar una asignación eficiente de recursos de emergencia.
 
 El sistema es capaz de:
-
 - Modelar hospitales, comunidades afectadas y la red vial como un **grafo**.
 - Asignar el recurso más adecuado (ambulancias, camiones, helicópteros, etc.) según la disponibilidad y las condiciones de acceso.
 - Calcular rutas considerando carreteras transitables y bloqueadas.
@@ -79,7 +74,6 @@ El flujo del sistema es el siguiente:
 El problema se formula como un **Constrained Quadratic Model (CQM)**, el cual puede transformarse en un modelo **QUBO** para ser resuelto mediante algoritmos de optimización cuántica.
 
 Actualmente el proyecto permite ejecutar:
-
 - Solución exacta (Fuerza Bruta)
 - Simulated Annealing (heurística clásica inspirada en computación cuántica)
 - D-Wave Hybrid CQM Solver
@@ -92,7 +86,6 @@ Actualmente el proyecto permite ejecutar:
 **Ubicación:** Chongos Bajo, Chupaca, Junín - Perú
 
 Escenario considerado:
-
 - Terremoto con epicentro en Chongos Bajo.
 - Localidades cercanas funcionan como depósitos logísticos.
 - Los recursos son enviados hacia la comunidad afectada utilizando la red vial disponible.
@@ -123,19 +116,3 @@ Escenario considerado:
 - QUBO
 - QAOA
 
----
-
-# Objetivo de Optimización
-
-Minimizar:
-
-- Tiempo total de respuesta.
-- Distancia recorrida por los vehículos.
-- Costo logístico del despliegue.
-
-Sujeto a:
-
-- Disponibilidad de vehículos.
-- Cobertura de la demanda.
-- Restricciones logísticas.
-- Condiciones de la red vial.
